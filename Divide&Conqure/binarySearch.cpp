@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 int binarySearch(int arr[], int key, int low, int high)
 {
@@ -23,14 +24,9 @@ int binarySearch(int arr[], int key, int low, int high)
 }
 
 int binSearch(int arr[], int key, int low, int high){
-    if(low == high){
-        if (arr[low] == key){
-            return arr[low];
-        }
-        else
-            return 0;
-    }
-    else{
+    if(low > high){
+		return -1;
+	}
         int mid = low + (high - low)/2;
         if(arr[mid] == key){
             return mid;
@@ -41,8 +37,6 @@ int binSearch(int arr[], int key, int low, int high){
         else{
             return binSearch(arr , key, low, mid-1);
         }
-    }
-    return -1;
 }
 void print(int arr[], int n)
 {
@@ -68,6 +62,7 @@ int main(void)
     }
     print(arr, n);
     int x = 10;
+	sort(arr,arr+n);
     //int res = binarySearch(arr, x, 0, n - 1);
     int res = binSearch(arr, x, 0, n - 1);
     (res == -1) ? cout << "Element is not present in array" : cout << "Element is present at index " << res;
