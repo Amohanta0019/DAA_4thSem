@@ -17,10 +17,10 @@ int partition(int arr[], int low, int high){
         if (i<j)
         {
             swap(arr[i], arr[j]);
-        }
-        swap(arr[low], arr[j]);
-        
+        } 
     }
+    swap(arr[low], arr[j]);
+    return j;
     
 }
 void quickSort(int arr[], int low, int high){
